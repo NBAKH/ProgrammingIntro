@@ -26,7 +26,7 @@ void draw(){
 void score(){
   
 }
- //<>//
+
 void drawField(){
   
 }
