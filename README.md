@@ -1,2 +1,4 @@
-# Introduction to programming
-This is a processing sketch with a version of the game Pong.
+# Guide til at lave Pong
+
+* asfd
+  * asdf
