@@ -34,7 +34,7 @@
 * Inddel spiller 1 og 2 i tre felter, så man kan styre retning (og evt ændre hastighed).
   * Find gerne på andre funktioner som kan implimenteres
 * Ændre spillere, bane og bolden ved at indsætte billeder
-* Implimenter en funktion der går at man spiller til en bestemt score, hvor efter vinderen bliver annonceret og spillet lukker selv
+* Implimenter en funktion der gør at man spiller til en bestemt score, hvor efter vinderen bliver annonceret og spillet lukker selv
   * Lav evt en restart funktion  
 * Man styrer den ene spiller ved at klikke i toppen og bunden af skærmen
 * Lav det til objektorienteret programmering (bolden er oplagt).
