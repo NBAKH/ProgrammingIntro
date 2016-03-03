@@ -2,6 +2,7 @@
 
 ## Banen
 1. Tegn din bane i drawField()
+ * Brug gerne line(), ellipse() og rect()
 
 ## Bolden
 1. Tegn en bold i midten af skærmen, ved at skrive kode i funktionen updateBall
@@ -24,7 +25,10 @@
  * Man flytter ikke spiller to i keyPressed(), gør det i stedet i playerUpdate
 
 ## Pointtæller
-1. Brug
+1. I funktionen score() skal der laves to tekstfelter på hver sin banehalvdel
+2. Den ene bruger score1 som input og den anden score2
+3. Lav to if-sætninger i checkPosition() der sørger for at score1 og score2 stiger med en hver gang der scores
+4. I samme if-sætninger, få bolden til at gå til start positionen
 
 ## Ekstra
 * Inddel spiller 1 og 2 i tre felter, så man kan styre retning (og evt ændre hastighed).
