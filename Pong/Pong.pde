@@ -41,12 +41,16 @@ void draw(){
 }
 
 void score(){
+  //sætter størelsen
   textSize(32);
+  //Sort tekst
   fill(0);
+  //tekst til spiller 1
   text(score1, 370, 30);
+  //tekst til spiller 2
   text(score2, 410, 30);
 }
- //<>// //<>//
+ //<>//
 void playerUpdate(){
   fill(0);
   rect(xPlayer1, yPlayer1, 10, hPlayer1);
@@ -68,10 +72,11 @@ void updateBall(){
 }
 
 void checkPosition(){
+  //checker hvis bolden rammer spiller 1
   if(ballX<xPlayer1+20 && ballY>yPlayer1 && ballY<yPlayer1+hPlayer1){
     accX=-1*accX;
   }
-  //point for player 1
+  //Spiller 2 scorer 
   if(ballX<0){
     score2++;
     ballX=width/2;
@@ -80,17 +85,19 @@ void checkPosition(){
     fill(0);
     //exit();
   }
-  //player 2 check
+  //checker hvis bolden rammer spiller 2
   if(ballX>xPlayer2-10 && ballY>yPlayer2 && ballY<yPlayer2+hPlayer2){
     accX=-1*accX;
   }
-  //point for player 
+  //Spiller 1 scorer  
   if(ballX>width){
     score1++;
     ballX=width/2;
     ballY=height/2;
     //exit();
   }
+  //Checker om den rammer toppen eller bunden
+  //|| er ligesom && og betyder eller istedet for og 
   if(ballY<0 || ballY>height){
     accY=-1*accY;
   }
