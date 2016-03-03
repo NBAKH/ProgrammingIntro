@@ -28,7 +28,7 @@
 1. I funktionen score() skal der laves to tekstfelter på hver sin banehalvdel
 2. Den ene bruger score1 som input og den anden score2
 3. Lav to if-sætninger i checkPosition() der sørger for at score1 og score2 stiger med en hver gang der scores
-4. I samme if-sætninger, få bolden til at gå til start positionen
+4. I samme if-sætninger, få bolden til at gå til start positionen hver gang der bliver scoret.
 
 ## Ekstra
 * Inddel spiller 1 og 2 i tre felter, så man kan styre retning (og evt ændre hastighed).
@@ -37,3 +37,4 @@
 * Implimenter en funktion der går at man spiller til en bestemt score, hvor efter vinderen bliver annonceret og spillet lukker selv
   * Lav evt en restart funktion  
 * Man styrer den ene spiller ved at klikke i toppen og bunden af skærmen
+* Lav det til objektorienteret programmering (bolden er oplagt).
