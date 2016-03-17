@@ -6,6 +6,9 @@ import processing.serial.*;
 import cc.arduino.*;
 
 Arduino arduino;
+PImage startP;
+PImage game_over;
+
 
 float ballX;
 float ballY;
@@ -23,7 +26,12 @@ int hPlayer2;
 int score1;
 int score2;
 
+int stageManager = 0;
+int game_position;
 void setup() {
+  startP = loadImage("pong_start_screen.jpg");
+  game_over = loadImage("game_over.png");
+  game_position = -600;
   ballX = 400;
   ballY = 300;
   accX = random(-3, 3);
@@ -46,12 +54,24 @@ void setup() {
 
 
 void draw() {
-  drawField();
-  score();
-  checkPosition();
-  updateBall();
-  playerUpdate();
-  //yPlayer1 = mouseY;
+  switch(stageManager){
+    case(0):
+      image(startP,0,0,800,600);
+      break;
+    case(1):
+      drawField();
+      score();
+      checkPosition();
+      updateBall();
+      playerUpdate();
+      break;
+    case(2):
+      if(game_position<1){
+        image(game_over,0,game_position,800,600);
+        game_position+=2;
+      }
+      break;
+  }
 }
 
 void score() {
@@ -59,8 +79,12 @@ void score() {
   fill(0);
   text(score1, 370, 30);
   text(score2, 410, 30);
+  if(score1>=1|| score2>=1){
+    stageManager=2;
+  }
 }
-//<>//
+
+
 void playerUpdate() {
   fill(0);
   yPlayer1=arduino.analogRead(0);
@@ -108,9 +132,23 @@ void checkPosition() {
     score1++;
     ballX=width/2;
     ballY=height/2;
-    //exit();
   }
   if (ballY<0 || ballY>height) {
     accY=-1*accY;
+  }
+}
+
+void keyTyped() {
+  if (key == ENTER) {
+    if(stageManager == 0){
+      stageManager++;
+    }
+    if(stageManager == 2){
+      score1=0;
+      score2=0;
+      stageManager = 1;
+      accX = random(-3, 3);
+      accY = random(-3, 3);
+    }
   }
 }
