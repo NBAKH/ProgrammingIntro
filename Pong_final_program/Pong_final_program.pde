@@ -6,13 +6,13 @@ float ballY;
 float accX;
 float accY;
 
-float yPlayer1;
-float xPlayer1;
-int hPlayer1;
+float leftPlayerX;
+float leftPlayerY;
+int leftPlayerHeight;
 
-float yPlayer2;
-float xPlayer2;
-int hPlayer2;
+float rightPlayerX;
+float rightPlayerY;
+int rightPlayerHeight;
 
 int score1;
 int score2;
@@ -29,13 +29,13 @@ void setup() {
   accX = random(-3, 3);
   accY = random(-3, 3);
 
-  xPlayer1 = 20;
-  yPlayer1 = 250;
-  hPlayer1 = 100;
+  leftPlayerX = 20;
+  leftPlayerY = 250;
+  leftPlayerHeight = 100;
 
-  xPlayer2 = width-30;
-  yPlayer2 = 250;
-  hPlayer2 = 100;
+  rightPlayerX = width-30;
+  rightPlayerY = 250;
+  rightPlayerHeight = 100;
 
   size(800, 600);
 }
@@ -74,8 +74,8 @@ void score() {
 
 void playerUpdate() {
   fill(0);
-  rect(xPlayer1, yPlayer1, 10, hPlayer1);
-  rect(xPlayer2, yPlayer2, 10, hPlayer2);
+  rect(leftPlayerX, leftPlayerY, 10, leftPlayerHeight);
+  rect(rightPlayerX, rightPlayerY, 10, rightPlayerHeight);
 }
 
 void drawField() {
@@ -93,7 +93,7 @@ void updateBall() {
 }
 
 void checkPosition() {
-  if (ballX<xPlayer1+20 && ballY>yPlayer1 && ballY<yPlayer1+hPlayer1) {
+  if (ballX<leftPlayerX+20 && ballY>leftPlayerY && ballY<leftPlayerY+leftPlayerHeight) {
     accX=-1*accX;
   }
   //point for player 1
@@ -106,7 +106,7 @@ void checkPosition() {
     //exit();
   }
   //player 2 check
-  if (ballX>xPlayer2-10 && ballY>yPlayer2 && ballY<yPlayer2+hPlayer2) {
+  if (ballX>rightPlayerX-10 && ballY>rightPlayerY && ballY<rightPlayerY+rightPlayerHeight) {
     accX=-1*accX;
   }
   //point for player 
@@ -141,17 +141,17 @@ void keyTyped() {
 void keyPressed() {
   if (stageManager == 1) {
     if (key == 'w') {
-      yPlayer1=yPlayer1-10;
+      leftPlayerY=leftPlayerY-10;
     }
     if (key == 's') {
-      yPlayer1=yPlayer1+10;
+      leftPlayerY=leftPlayerY+10;
     }
     if (key == CODED) {
       if (keyCode == UP) {
-        yPlayer2=yPlayer2-10;
+        rightPlayerY=rightPlayerY-10;
       }
       if (keyCode == DOWN) {
-        yPlayer2=yPlayer2+10;
+        rightPlayerY=rightPlayerY+10;
       }
     }
   }
