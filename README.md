@@ -16,10 +16,10 @@ In this lesson you will learn how to make the ball move. Besides simply moving t
 
 In this lesson you will respond to user-input on the keyboard making the two paddles move. You will also program the ball to collide with the two paddles and bounce in the opposite direction. 
 
-### Lesson_4: States 
+### Lesson_4: The states 
 
 In this lesson you will incorporate states into your game. By using states you will be able to add a welcome screen, aggregate the previously programmed functionallity into a game state, and add a result screen. 
 
-### Lesson_5: Flashy things
+### Lesson_5: The flash
 
 Various improvements you can make to your game. 
