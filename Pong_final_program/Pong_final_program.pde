@@ -14,16 +14,19 @@ float rightPlayerX;
 float rightPlayerY;
 int rightPlayerHeight;
 
-int score1;
-int score2;
+int leftPlayerScore;
+int rightPlayerScore;
 
 int stageManager = 0;
 int game_position;
 
 void setup() {
+  size(800, 600);
+
   startP = loadImage("pong_start_screen.jpg");
   game_over = loadImage("game_over.png");
   game_position = -600;
+  
   ballX = 400;
   ballY = 300;
   accX = random(-3, 3);
@@ -36,27 +39,25 @@ void setup() {
   rightPlayerX = width-30;
   rightPlayerY = 250;
   rightPlayerHeight = 100;
-
-  size(800, 600);
 }
 
 void draw() {
   switch(stageManager) {
     case(0):
-    image(startP, 0, 0, 800, 600);
+      image(startP, 0, 0, 800, 600);
     break;
     case(1):
-    drawField();
-    score();
-    checkPosition();
-    updateBall();
-    playerUpdate();
+      drawField();
+      score();
+      checkPosition();
+      updateBall();
+      playerUpdate();
     break;
     case(2):
-    if (game_position<1) {
-      image(game_over, 0, game_position, 800, 600);
-      game_position+=2;
-    }
+      if (game_position<1) {
+        image(game_over, 0, game_position, 800, 600);
+        game_position+=2;
+      }
     break;
   }
 }
@@ -64,9 +65,9 @@ void draw() {
 void score() {
   textSize(32);
   fill(0);
-  text(score1, 370, 30);
-  text(score2, 410, 30);
-  if (score1>=1|| score2>=1) {
+  text(leftPlayerScore, 370, 30);
+  text(rightPlayerScore, 410, 30);
+  if (leftPlayerScore>=1|| rightPlayerScore>=1) {
     stageManager=2;
   }
 }
@@ -98,7 +99,7 @@ void checkPosition() {
   }
   //point for player 1
   if (ballX<0) {
-    score2++;
+    rightPlayerScore++;
     ballX=width/2;
     ballY=height/2;
     textSize(600);
@@ -111,7 +112,7 @@ void checkPosition() {
   }
   //point for player 
   if (ballX>width) {
-    score1++;
+    leftPlayerScore++;
     ballX=width/2;
     ballY=height/2;
   }
@@ -129,8 +130,8 @@ void keyTyped() {
 
   if (stageManager == 2) {
     if (key == ENTER) {
-      score1=0;
-      score2=0;
+      leftPlayerScore=0;
+      rightPlayerScore=0;
       stageManager = 1;
       accX = random(-3, 3);
       accY = random(-3, 3);
