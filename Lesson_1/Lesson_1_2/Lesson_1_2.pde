@@ -1,4 +1,4 @@
-sfloat leftPlayerX;
+float leftPlayerX;
 float leftPlayerY;
 float leftPlayerHeight; 
 
