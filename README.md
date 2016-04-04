@@ -6,7 +6,7 @@ This is a teaching resource to be used for facilitating a five part introduction
 
 ### Lesson_1: The field
 
-You will learn to draw the playing field, the two paddles, the ball and write the score. All of these elements will be static and you will learn how to aggregate similar operations into a single function. You will also learn how to properly use variables in your code, so it will be scalable and easily changable for the future lessons.
+You will learn to draw the playing field, the two paddles, the ball and write the score. All of these elements will be static and you will learn how to aggregate similar operations into functions. You will also learn how to properly use variables in your code.
 
 ### Lesson_2: The ball
 
