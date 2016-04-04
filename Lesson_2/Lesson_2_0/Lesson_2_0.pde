@@ -1,6 +1,11 @@
+float ballX;
+float ballY;
+
 void setup(){
   size(800, 600);
 
+  ballX = 500;
+  ballY = 100;
 }
 
 void draw(){
@@ -14,7 +19,7 @@ void draw(){
   rect(780, 300, 10, 80);
 
   // And the ball
-  ellipse(500, 100, 30, 30);
+  ellipse(ballX, ballY, 30, 30);
 }
 
 void drawField(){
