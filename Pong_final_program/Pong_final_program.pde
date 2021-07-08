@@ -6,57 +6,58 @@ float ballY;
 float accX;
 float accY;
 
-float yPlayer1;
-float xPlayer1;
-int hPlayer1;
+float leftPlayerX;
+float leftPlayerY;
+int leftPlayerHeight;
 
-float yPlayer2;
-float xPlayer2;
-int hPlayer2;
+float rightPlayerX;
+float rightPlayerY;
+int rightPlayerHeight;
 
-int score1;
-int score2;
+int leftPlayerScore;
+int rightPlayerScore;
 
 int stageManager = 0;
 int game_position;
 
 void setup() {
+  size(800, 600);
+
   startP = loadImage("pong_start_screen.jpg");
   game_over = loadImage("game_over.png");
   game_position = -600;
+  
   ballX = 400;
   ballY = 300;
   accX = random(-3, 3);
   accY = random(-3, 3);
 
-  xPlayer1 = 20;
-  yPlayer1 = 250;
-  hPlayer1 = 100;
+  leftPlayerX = 20;
+  leftPlayerY = 250;
+  leftPlayerHeight = 100;
 
-  xPlayer2 = width-30;
-  yPlayer2 = 250;
-  hPlayer2 = 100;
-
-  size(800, 600);
+  rightPlayerX = width-30;
+  rightPlayerY = 250;
+  rightPlayerHeight = 100;
 }
 
 void draw() {
   switch(stageManager) {
     case(0):
-    image(startP, 0, 0, 800, 600);
+      image(startP, 0, 0, 800, 600);
     break;
     case(1):
-    drawField();
-    score();
-    checkPosition();
-    updateBall();
-    playerUpdate();
+      drawField();
+      score();
+      checkPosition();
+      updateBall();
+      playerUpdate();
     break;
     case(2):
-    if (game_position<1) {
-      image(game_over, 0, game_position, 800, 600);
-      game_position+=2;
-    }
+      if (game_position<1) {
+        image(game_over, 0, game_position, 800, 600);
+        game_position+=2;
+      }
     break;
   }
 }
@@ -64,9 +65,9 @@ void draw() {
 void score() {
   textSize(32);
   fill(0);
-  text(score1, 370, 30);
-  text(score2, 410, 30);
-  if (score1>=1|| score2>=1) {
+  text(leftPlayerScore, 370, 30);
+  text(rightPlayerScore, 410, 30);
+  if (leftPlayerScore>=1|| rightPlayerScore>=1) {
     stageManager=2;
   }
 }
@@ -74,8 +75,8 @@ void score() {
 
 void playerUpdate() {
   fill(0);
-  rect(xPlayer1, yPlayer1, 10, hPlayer1);
-  rect(xPlayer2, yPlayer2, 10, hPlayer2);
+  rect(leftPlayerX, leftPlayerY, 10, leftPlayerHeight);
+  rect(rightPlayerX, rightPlayerY, 10, rightPlayerHeight);
 }
 
 void drawField() {
@@ -93,12 +94,12 @@ void updateBall() {
 }
 
 void checkPosition() {
-  if (ballX<xPlayer1+20 && ballY>yPlayer1 && ballY<yPlayer1+hPlayer1) {
+  if (ballX<leftPlayerX+20 && ballY>leftPlayerY && ballY<leftPlayerY+leftPlayerHeight) {
     accX=-1*accX;
   }
   //point for player 1
   if (ballX<0) {
-    score2++;
+    rightPlayerScore++;
     ballX=width/2;
     ballY=height/2;
     textSize(600);
@@ -106,12 +107,12 @@ void checkPosition() {
     //exit();
   }
   //player 2 check
-  if (ballX>xPlayer2-10 && ballY>yPlayer2 && ballY<yPlayer2+hPlayer2) {
+  if (ballX>rightPlayerX-10 && ballY>rightPlayerY && ballY<rightPlayerY+rightPlayerHeight) {
     accX=-1*accX;
   }
   //point for player 
   if (ballX>width) {
-    score1++;
+    leftPlayerScore++;
     ballX=width/2;
     ballY=height/2;
   }
@@ -129,8 +130,8 @@ void keyTyped() {
 
   if (stageManager == 2) {
     if (key == ENTER) {
-      score1=0;
-      score2=0;
+      leftPlayerScore=0;
+      rightPlayerScore=0;
       stageManager = 1;
       accX = random(-3, 3);
       accY = random(-3, 3);
@@ -141,17 +142,17 @@ void keyTyped() {
 void keyPressed() {
   if (stageManager == 1) {
     if (key == 'w') {
-      yPlayer1=yPlayer1-10;
+      leftPlayerY=leftPlayerY-10;
     }
     if (key == 's') {
-      yPlayer1=yPlayer1+10;
+      leftPlayerY=leftPlayerY+10;
     }
     if (key == CODED) {
       if (keyCode == UP) {
-        yPlayer2=yPlayer2-10;
+        rightPlayerY=rightPlayerY-10;
       }
       if (keyCode == DOWN) {
-        yPlayer2=yPlayer2+10;
+        rightPlayerY=rightPlayerY+10;
       }
     }
   }
